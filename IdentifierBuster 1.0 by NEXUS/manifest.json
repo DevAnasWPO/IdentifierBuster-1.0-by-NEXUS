@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "IdentifierBuster by NEXUS",
+  "version": "1.0",
+  "description": "Enhances the BattleMetrics RCON player page to show detailed information about players sharing an identifier.",
+  "author": "NEXUS",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.battlemetrics.com/rcon/players/*"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "./main.js"
+      ],
+      "css": [
+        "./main.css"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "bg/serviceWorker.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/*.png",
+        "modules/setup.js",
+        "modules/display.js",
+        "modules/api.js",
+        "modules/queueClient.js",
+        "modules/toast.js",
+        "modules/progressHud.js",
+        "modules/bundleCache.js",
+        "modules/prefetch.js",
+        "modules/scoring.js"
+      ],
+      "matches": [
+        "https://www.battlemetrics.com/*"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "*://api.battlemetrics.com/*",
+    "*://api.steampowered.com/*"
+  ],
+  "permissions": [
+    "storage",
+    "tabs"
+  ]
+}
